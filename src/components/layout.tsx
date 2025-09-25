@@ -10,8 +10,10 @@ export function Layout(){
                 </nav>
             </div>
 
-            <main>
-                <Outlet />
+            <main className="flex items-center justify-center bg-gray-100">
+                <section className="flex items-center justify-center bg-white p-4 w-4/5 rounded-xl">
+                    <Outlet />
+                </section>
             </main>
         </>
         
