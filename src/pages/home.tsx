@@ -12,7 +12,7 @@ export function Home({ studies, removeStudy }: HomeProps) {
             <h2 className="font-bold text-gray-600 text-xl mb-3">
                 Página Inicial
             </h2>
-            <p className="mb-4">Seus treinos aparecem aqui</p>
+            <p className="mb-4">Seus estudos aparecem aqui</p>
 
             <StudyList removeStudy={removeStudy} StudyList={studies} />
         </>

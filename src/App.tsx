@@ -1,10 +1,26 @@
 import { BrowserRouter, Route, Routes } from "react-router-dom"
 import { Layout } from "./components/layout"
-import { Home } from "./pages/home"
-import { NovaSessao } from "./pages/add-nova-sessao"
-import { NotFound } from "./pages/not-found"
-import { useCallback, useState } from "react"
+import { lazy, Suspense, useCallback, useState } from "react"
 import type { StudySession } from "./types/study-session"
+import { Fallback } from "./components/fallback"
+import { ErrorBoundary } from "react-error-boundary"
+import { Loading } from "./components/loading"
+
+const Home = lazy(() =>
+  import("./pages/home").then((m) => ({ default: m.Home }))
+);
+
+const NotFound = lazy(() =>
+  import("./pages/not-found").then((m) => ({ default: m.NotFound }))
+);
+
+const NovaSessao = lazy(() =>
+  import("./pages/add-new-session").then((m) => ({ default: m.NovaSessao }))
+);
+
+const StudyDetails = lazy(() =>
+  import("./pages/study-details").then((m) => ({ default: m.StudyDetails }))
+);
 
 function App() {
   const [studies, setStudies] = useState<StudySession[]>([]);
@@ -31,18 +47,23 @@ function App() {
   return (
     <>
       <BrowserRouter>
-        <Routes>
-          <Route path="/" element={<Layout/>}>
-            <Route
-            index element={
-              <Home studies={studies} removeStudy={removeStudySession}/>}/>
-            <Route
-              path="/add"
-              element={<NovaSessao onAdd={addStudySession}
-              studies={studies}/>}/>
-            <Route path="*" element={<NotFound />} />
-          </Route>
-        </Routes>
+        <ErrorBoundary FallbackComponent={Fallback}>
+          <Suspense fallback={<Loading />}>
+            <Routes>
+              <Route path="/" element={<Layout/>}>
+                <Route
+                index element={
+                  <Home studies={studies} removeStudy={removeStudySession}/>}/>
+                <Route
+                  path="/add"
+                  element={<NovaSessao onAdd={addStudySession}
+                  studies={studies}/>}/>
+                <Route path="/session/:id" element={<StudyDetails />} />
+                <Route path="*" element={<NotFound />} />
+              </Route>
+            </Routes>
+          </Suspense>
+        </ErrorBoundary>
       </BrowserRouter>
     </>
   )

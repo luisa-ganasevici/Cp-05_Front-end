@@ -18,7 +18,7 @@ export function StudyResume({ studySession, removeStudy }: StudyResumeProps) {
 
                 <div className="flex flex-col w-32 min-h-16">
                     <Link
-                            to={`/studySession/${studySession.id}`}
+                            to={`/session/${studySession.id}`}
                             state={{ studySession }}
                             className="flex-1 flex items-center justify-center text-blue-500 hover:underline rounded-t border border-blue-500"
                         >detalhes
