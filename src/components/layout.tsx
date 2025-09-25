@@ -9,9 +9,8 @@ export function Layout(){
                     <Link to="/add" className="hover:text-yellow-600">Nova Sessão</Link>
                 </nav>
             </div>
-
-            <main className="flex items-center justify-center bg-gray-100">
-                <section className="flex items-center justify-center bg-white p-4 w-4/5 rounded-xl">
+            <main className="flex items-center justify-center bg-gray-100 mt-4 mb-4">
+                <section className="flex flex-col items-center justify-center bg-white p-4 w-1/2 rounded-2xl">
                     <Outlet />
                 </section>
             </main>
