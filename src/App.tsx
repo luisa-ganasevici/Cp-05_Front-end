@@ -1,10 +1,12 @@
 import { BrowserRouter, Route, Routes } from "react-router-dom"
 import { Layout } from "./components/layout"
 import { Home } from "./pages/home"
-import { NovaSessao } from "./pages/add-nova-sessao"
+import { NovaSessao } from "./pages/add-new-session"
 import { NotFound } from "./pages/not-found"
 import { useCallback, useState } from "react"
 import type { StudySession } from "./types/study-session"
+import { StudyCard } from "./components/study-card"
+import { StudyDetails } from "./pages/study-details"
 
 function App() {
   const [studies, setStudies] = useState<StudySession[]>([]);
@@ -40,6 +42,7 @@ function App() {
               path="/add"
               element={<NovaSessao onAdd={addStudySession}
               studies={studies}/>}/>
+            <Route path="/session/:id" element={<StudyDetails />} />
             <Route path="*" element={<NotFound />} />
           </Route>
         </Routes>
