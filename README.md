@@ -1,73 +1,53 @@
-# React + TypeScript + Vite
+CP-05 de Front-End FIAP 2025
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+TURMA 1TDSPV
 
-Currently, two official plugins are available:
+##Integrantes:
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+**Johnny Dias**      |   **RM 566516**
+GitHub: https://github.com/johnny-mathias
+LinkedIn: https://www.linkedin.com/in/johnny-mathias-dev/
 
-## React Compiler
+**Luisa Ganasevici**  |   **RM 563403**
+GitHub: https://github.com/luisa-ganasevici
+LinkedIn: https://www.linkedin.com/in/luisa-ganasevici-316824356/
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
 
-## Expanding the ESLint configuration
+====================================================================
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+##DIVISÃO DE TAREFAS
 
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
+Luisa: Criação, construção inicial do projeto e realização do deploy no Vercel
+Johnny: Finalização e estilização
 
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
-
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-```
-
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
-
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
-
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-```
+📂 public                     
+ ∟ 📄 livro-icone.png
+📂 src
+ ∟ 📂 components  
+    ∟ 📄 fallback.tsx
+    ∟ 📄 layout.tsx
+    ∟ 📄 loading.tsx
+    ∟ 📄 study-card.tsx
+    ∟ 📄 study-list.tsx
+    ∟ 📄 study-resume.tsx
+    ∟ 📄 study-session-form.tsx
+ ∟ 📂 pages
+    ∟ 📄 add-new-session.tsx
+    ∟ 📄 home.tsx
+    ∟ 📄 not-found.tsx
+    ∟ 📄 study-details.tsx
+ ∟ 📂 types
+    ∟ 📄 study-session.ts
+ ∟ 📄 App.tsx
+ ∟ 📄 index.css
+ ∟ 📄 main.tsx
+ 📄 .gitigonore
+ 📄 eslint.config.js
+ 📄 index.html
+ 📄 package-lock.json
+ 📄 package.json
+ 📄 README.md
+ 📄 tsconfig.app.json
+ 📄 tsconfig.json
+ 📄 tsconfig.node.json
+ 📄 vite.config.ts
