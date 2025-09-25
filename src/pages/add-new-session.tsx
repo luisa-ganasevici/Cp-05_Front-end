@@ -2,29 +2,34 @@ import { useMemo } from "react";
 import type { StudySession } from "../types/study-session";
 import { StudySessionForm } from "../components/study-session-form";
 
-
 interface AddNovaSessao {
   studies: StudySession[];
   onAdd: (studySession: StudySession) => void;
 }
 
-export function NovaSessao({ onAdd, studies}: AddNovaSessao){
+export function NovaSessao({ onAdd, studies }: AddNovaSessao) {
   const studySessionTotal = useMemo(() => {
     return studies.length;
   }, [studies]);
 
-  const studyMinutes = useMemo(() => {
-    let studyMinutes: number = 0;
-
+  const totalMinutes = useMemo(() => {
+    let minutes = 0;
     studies.forEach((studySession) => {
-      studyMinutes += studySession.minutes;
+      minutes += studySession.minutes;
     });
-
-    const hours = Math.floor(studyMinutes / 60);
-    const minutes = studyMinutes % 60;
-
-    return `${hours}h${minutes}min`;
+    return minutes;
   }, [studies]);
+
+  const studyMinutes = useMemo(() => {
+    const hours = Math.floor(totalMinutes / 60);
+    const minutes = totalMinutes % 60;
+    return `${hours}h${minutes}min`;
+  }, [totalMinutes]);
+
+  const mediaMinutes = useMemo(() => {
+    if (studySessionTotal === 0) return 0;
+    return totalMinutes / studySessionTotal;
+  }, [totalMinutes, studySessionTotal]);
 
   return (
     <>
@@ -36,9 +41,11 @@ export function NovaSessao({ onAdd, studies}: AddNovaSessao){
         Total de conteúdos: {studySessionTotal}
       </p>
 
-      <p>Tempo de estudo: {studyMinutes}</p>
+      <p>Tempo total de estudo: {studyMinutes}</p>
+
+      <p className="text-gray-500">Média em minutos de cada conteúdo: {`${mediaMinutes.toFixed(2)} min`}</p>
 
       <StudySessionForm onAdd={onAdd} />
     </>
-  );  
+  );
 }
