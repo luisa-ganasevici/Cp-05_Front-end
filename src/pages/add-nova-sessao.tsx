@@ -28,11 +28,11 @@ export function NovaSessao({ onAdd, studies}: AddNovaSessao){
 
   return (
     <>
-      <h2 className="font-bold text-blue-500 text-3xl mb-3">
+      <h2 className="font-bold text-blue-500 text-xl mb-3">
         Adicionar novo conteúdo de estudos
       </h2>
 
-      <p className="text-lg font-bold text-gray-600">
+      <p className="font-bold text-gray-600">
         Total de conteúdos: {studySessionTotal}
       </p>
 
