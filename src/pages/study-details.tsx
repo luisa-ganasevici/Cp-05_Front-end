@@ -3,19 +3,8 @@ import { StudyCard } from "../components/study-card";
 
 export function StudyDetails() {
   const { id } = useParams();
-  const location = useLocation();
 
-  // se não existir state, garante que não quebre
-  const study = location.state?.study;
-
-  if (!study) {
-    return (
-      <p className="text-red-600">
-        Nenhum treino encontrado para o ID {id}.  
-        Tente voltar para a lista inicial.
-      </p>
-    );
-  }
+  const { state } = useLocation();
 
   return (
     <>
@@ -23,7 +12,7 @@ export function StudyDetails() {
         Detalhes do treino - ID {id}
       </h2>
 
-      <StudyCard studies={study} />
+      <StudyCard studies={state.studySession} />
     </>
   );
 }
