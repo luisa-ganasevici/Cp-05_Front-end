@@ -19,19 +19,23 @@ function App() {
     updatedStudies.splice(studyToDelete, 1);
 
     setStudies(updatedStudies);
-  }, []);
+  }, [studies]);
 
    // Renderiza somente uma vez
   const addStudySession = useCallback((studySession: StudySession) => {
     setStudies((prev) => [...prev, studySession]);
   }, []);
 
+  
+
   return (
     <>
       <BrowserRouter>
         <Routes>
           <Route path="/" element={<Layout/>}>
-            <Route index element={<Home/>}/>
+            <Route
+            index element={
+              <Home studies={studies} removeStudy={removeStudySession}/>}/>
             <Route
               path="/add"
               element={<NovaSessao onAdd={addStudySession}
